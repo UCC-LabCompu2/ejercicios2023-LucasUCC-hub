@@ -1,0 +1,22 @@
+body {
+    background-color: #e1e1e1;
+    font-family: "Open Sans";
+    background: linear-gradient(to bottom, #86e2ff, #4fa8ff);
+    padding: 1em;
+}
+div {
+    border-bottom: 2px solid #298eef;
+    border-radius: 1em;
+    box-shadow: -0.2em .5em .5em #00000022;
+    padding: 2rem;
+    background-color: white;
+    margin: 1rem 0;
+}
+.logo {
+    width: 10em;
+    height: 10em;
+    border-radius: 5em;
+}
+.main_info {
+    text-align: center;
+}
