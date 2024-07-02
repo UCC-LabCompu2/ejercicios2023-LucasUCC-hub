@@ -3,44 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Operaciones Matemáticas</title>
-    <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua" rel="stylesheet">
-    <link href="miEstilo.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="misFunciones.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+
 </head>
 <body class="body-num">
 
-<div class="centrado div-conver">
+<div class="p-5">
     <h1>Operaciones Matemáticas</h1>
-    <form class="operacionesMat">
-        <p>
-            <input id="nums1" type="text" name="sum_num1">
-            +
-            <input id="nums2" type="text" name="sum_num2">
-            =
-            <input id="totalS" type="text" name="sum_total">
-        </p>
-        <p>
-            <input id="numr1" type="text" name="res_num1">
-            -
-            <input id="numr2" type="text" name="res_num2">
-            =
-            <input id="totalR" type="text" name="res_total">
-        </p>
-        <p>
-            <input id="numm1" type="text" name="mul_num1">
-            x
-            <input id="numm2" type="text" name="mul_num2">
-            =
-            <input id="totalM" type="text" name="mul_total">
-        </p>
-        <p>
-            <input id="numd1" type="text" name="div_num1">
-            /
-            <input id="numd2" type="text" name="div_num2">
-            =
-            <input id="totalD" type="text" name="div_total">
-        </p>
+    <form>
+        <input id="num1" name="num1" type="text">
+        <select id="operacion">
+            <option value="suma">+</option>
+            <option value="producto">x</option>
+            <option value="cociente">/</option>
+            <option value="resta">-</option>
+        </select>
+        <input id="num2" name="num2" type="text">
+        = <span id="res"></span>
     </form>
+<script>
+    $(document).ready(function() {
+        const res = $("#res");
+
+        const calc = (n1, n2, op) => {
+            switch (op) {
+                case 'suma':
+                    return n1 + n2;
+                case 'producto':
+                    return n1 * n2;
+                case 'cociente':
+                    return n1 / n2;
+                case 'resta':
+                    return n1 - n2;
+                default:
+                    return -1;
+            }
+        }
+
+        $("#num1, #num2, #operacion").on("input select", () => {
+            const num1Val = Number($("#num1").val());
+            const num2Val = Number($("#num2").val());
+            const selectVal = $("#operacion").val();
+
+            if (!isNaN(num1Val) && !isNaN(num2Val)) {
+                res.html(calc(num1Val, num2Val, selectVal));
+            } else {
+                res.empty();
+            }
+        });
+    });
+</script>
 </div>
 </body>
 </html>

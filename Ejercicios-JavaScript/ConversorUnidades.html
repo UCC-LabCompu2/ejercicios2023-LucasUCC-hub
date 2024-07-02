@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Conversor de Unidades</title>
-    <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua" rel="stylesheet">
-    <link href="miEstilo.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="misFunciones.js"></script>
-</head>
-<body class="body-num">
+    <head>
+        <meta charset="UTF-8">
+        <title>Conversor de Unidades</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body class="p-4">
+        <fieldset>
+            <input id="magnitud" type="text" name="magnitud" placeholder="Magnitud:">
+            <select id="unidades">
+                <option value="m">m</option>
+                <option value="in">in</option>
+                <option value="ft">ft</option>
+            </select>
+            <p id="conversiones"></p>
+        </fieldset>
 
-<div class="centrado div-conver">
-    <h1>Conversor de Unidades</h1>
-    <form>
-        <p>
-            <label for="metro"> Metro</label> = <input id="metro" type="text" name="unid_metro">
-        </p>
-        <p>
-            <label for="pulgada"> Pulgada</label> = <input id="pulgada" type="text" name="unid_pulgada">
-        </p>
-        <p>
-            <label for="pie"> Pie </label> = <input id="pie" type="text" name="unid_pie">
-        </p>
-        <p>
-            <label for="yarda"> Yarda</label> = <input id="yarda" type="text" name="unid_yarda">
-        </p>
-    </form>
-</div>
-</body>
+    </body>
+    <script>
+        const conversiones = document.getElementById("conversiones");
+        const magnitud = document.getElementById("magnitud");
+        const select = document.getElementById("unidades");
+
+        let unidad = "m";
+
+        let equiv = {
+            "m" : 1, 
+            "in" : 39.3701,
+            "ft" : 3.28084,
+        }
+
+        // Convierte la unidad de entrada a la de salida segun la tabla de equivalencias
+        let convUnidad = (magnitud, de, a) => Math.round(magnitud / equiv[de] * equiv[a] * 100 ) / 100;
+
+        // Imprime las conversiones de magnitudes en el p "conversiones"
+        let calc = () => {
+            if (magnitud.value.includes(',')) {
+                magnitud.value.replace(',', '.');
+            }
+            unidad = select.options[select.selectedIndex].value;
+
+            conversiones.innerText = `
+            Metros: ${convUnidad(magnitud.value, unidad, "m")}
+            Pulgadas: ${convUnidad(magnitud.value, unidad, "in")}
+            Pies: ${convUnidad(magnitud.value, unidad, "ft")}
+            `
+        }
+
+        // Eventos
+        magnitud.addEventListener("change", calc);
+        select.addEventListener("change", calc)
+        
+    </script>
 </html>

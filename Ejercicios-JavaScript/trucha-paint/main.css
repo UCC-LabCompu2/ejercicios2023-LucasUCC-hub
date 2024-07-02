@@ -1,0 +1,48 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.p-5 {
+    padding: 5rem;
+}
+
+.color-white {
+    color: rgb(253, 253, 253)
+}
+
+.bg-gray {
+    background-color: rgb(92, 92, 92);
+}
+
+#board {
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%) 0 0 / 20px 20px,
+        linear-gradient(rgba(255, 255, 255, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%) 10px 10px / 20px 20px,
+        #ccc;
+}
+
+h1 {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

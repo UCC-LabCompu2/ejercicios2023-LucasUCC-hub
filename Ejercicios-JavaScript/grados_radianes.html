@@ -19,5 +19,15 @@
         </p>
     </form>
 </div>
+<script>
+    let input_grados = document.getElementById("grados");
+    let input_rad = document.getElementById("radianes");
+    input_grados.addEventListener("change", () => {
+        input_rad.value = input_grados.value*Math.PI/180;
+    })
+    input_rad.addEventListener("change", () => {
+        input_grados.value = input_rad.value*180/Math.PI;
+    })
+</script>
 </body>
 </html>
