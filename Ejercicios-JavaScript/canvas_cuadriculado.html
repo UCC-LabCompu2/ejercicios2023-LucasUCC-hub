@@ -31,6 +31,7 @@
 
         ctx.strokeStyle = '#ddd';
 
+        // Dibuja las lineas verticales
         for (let x = 0; x <= canvas.width; x += gridSize) {
             ctx.beginPath();
             ctx.moveTo(x, 0);
@@ -38,6 +39,7 @@
             ctx.stroke();
         }
 
+        // Dibuja las lineas horizontales
         for (let y = 0; y <= canvas.height; y += gridSize) {
             ctx.beginPath();
             ctx.moveTo(0, y);
