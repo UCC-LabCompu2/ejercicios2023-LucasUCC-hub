@@ -2,20 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Canvas con Circulo y Cuadrado</title>
+    <title>Canvas con Cuadriculado</title>
     <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua" rel="stylesheet">
     <link href="miEstilo.css" type="text/css" rel="stylesheet">
+    <style>
+        #myCanvas {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
 <h1>Canvas 2</h1>
-<p>Ejercicio: Dibujar un cuadriculado en un canvas. La función debe llamarse al presionar el boton.</p>
-<button>
+<p>Ejercicio: Dibujar un cuadriculado en un canvas. La función debe llamarse al presionar el botón.</p>
+<button onclick="drawGrid()">
     Dibujar Cuadriculado
 </button>
-<canvas id="myCanvas" class="ejer">
+<canvas id="myCanvas" class="ejer" width="500" height="500">
     Tu navegador no soporta el tag de HTML5 canvas.
 </canvas>
+<script>
+    function drawGrid() {
+        let canvas = document.getElementById('myCanvas');
+        let ctx = canvas.getContext('2d');
+        let gridSize = 20;
 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = '#ddd';
+
+        for (let x = 0; x <= canvas.width; x += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+            ctx.stroke();
+        }
+
+        for (let y = 0; y <= canvas.height; y += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+            ctx.stroke();
+        }
+    }
+</script>
 </body>
 </html>
